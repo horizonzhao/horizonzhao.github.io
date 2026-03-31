@@ -20,27 +20,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="IT知识，持续更新中...">
+    <meta name="description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机基础">
-<meta property="og:url" content="http://example.com/2026/03/03/cs_basic/index.html">
+<meta property="og:title" content="Engram机制">
+<meta property="og:url" content="http://example.com/2026/03/31/engram/index.html">
 <meta property="og:site_name" content="hello,universe">
-<meta property="og:description" content="IT知识，持续更新中...">
+<meta property="og:description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-03-03T06:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-31T06:54:34.927Z">
+<meta property="og:image" content="http://example.com/2026/03/31/engram/en.png">
+<meta property="article:published_time" content="2026-03-31T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-31T07:21:40.200Z">
 <meta property="article:author" content="Horizon Zhao">
-<meta property="article:tag" content="计算机组成">
+<meta property="article:tag" content="Engram">
+<meta property="article:tag" content="大模型">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/03/31/engram/en.png">
 
 
-<link rel="canonical" href="http://example.com/2026/03/03/cs_basic/">
+<link rel="canonical" href="http://example.com/2026/03/31/engram/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2026/03/03/cs_basic/","path":"2026/03/03/cs_basic/","title":"计算机基础"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2026/03/31/engram/","path":"2026/03/31/engram/","title":"Engram机制"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>计算机基础 | hello,universe</title>
+<title>Engram机制 | hello,universe</title>
   
 
 
@@ -134,7 +137,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">1. 计算机基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">2. 消息队列</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Engram%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">1. Engram架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%BC%A0%E7%BB%9FN-gram%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 传统N-gram存在的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Engram%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Engram解决方案：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">2. 具体例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%88Agent%EF%BC%89%E7%9A%84%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 智能体（Agent）的意图识别：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E2%80%9C%E5%9B%9E%E9%80%80%E2%80%9D%E6%9C%BA%E5%88%B6%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 大模型的“回退”机制：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,7 +188,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/03/cs_basic/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/31/engram/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,12 +201,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="计算机基础 | hello,universe">
-      <meta itemprop="description" content="IT知识，持续更新中...">
+      <meta itemprop="name" content="Engram机制 | hello,universe">
+      <meta itemprop="description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          计算机基础
+          Engram机制
         </h1>
 
         <div class="post-meta-container">
@@ -214,7 +217,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2026-03-03 14:00:00" itemprop="dateCreated datePublished" datetime="2026-03-03T14:00:00+08:00">2026-03-03</time>
+      <time title="Created: 2026-03-31 14:00:00" itemprop="dateCreated datePublished" datetime="2026-03-31T14:00:00+08:00">2026-03-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -229,26 +232,51 @@
   
 </div>
 
-            <div class="post-description">IT知识，持续更新中...</div>
+            <div class="post-description">虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="1-计算机基础"><a href="#1-计算机基础" class="headerlink" title="1. 计算机基础"></a>1. 计算机基础</h2><ul>
-<li>1Byte &#x3D; 8bits，B 是最小单位</li>
-<li>冯诺依曼计算机架构：输入、输出、控制器、运算器、存储器<ul>
-<li>外存、内存在 cpu 外，缓存cache、寄存器在 cpu 内</li>
-<li>数据流：外存 - 内存 - cache - 寄存器</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-消息队列"><a href="#2-消息队列" class="headerlink" title="2. 消息队列"></a>2. 消息队列</h2><blockquote>
-<p>异步性</p>
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram… </p>
 </blockquote>
-<p>后台慢慢完成耗时的操作，e.g.扣减库存、创建订单</p>
-<p>但用户这边已经抢购成功，e.g.基本校验、预扣库存</p>
+<p><img src="/2026/03/31/engram/en.png" alt="架构图"></p>
+<h3 id="1-Engram架构"><a href="#1-Engram架构" class="headerlink" title="1. Engram架构"></a>1. Engram架构</h3><p>Deepseek在2026年1月12日发表论文《Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models》，提出了Engram架构，其思想与自然语言处理的N-gram有密切关系，下面进行分析。 </p>
+<p><strong>原理</strong>：把海量的 N-gram 统计信息存储在一个巨大的查找表中，作为一个独立的模块挂载在大模型上。 </p>
+<p><strong>作用</strong>：大模型负责复杂的推理，而 N-gram 模块负责快速提取固定的事实知识，Engram在结构上与MoE的条件计算形成互补。</p>
+<p><strong>优势</strong>：这相当于给大模型装了一个“超级字典”。当模型需要回答事实性问题时，直接查 N-gram 表，既不需要消耗昂贵的 GPU 算力，又能大幅减少幻觉。 </p>
+<h4 id="1-1-传统N-gram存在的问题："><a href="#1-1-传统N-gram存在的问题：" class="headerlink" title="1.1 传统N-gram存在的问题："></a>1.1 传统N-gram存在的问题：</h4><ol>
+<li><p>组合爆炸：比如3-gram，词库有50k个词，组合就有50k^3&#x3D;1.25e14种可能，而真实遇到的词很稀疏 </p>
+</li>
+<li><p>同一个词大小写不同，识别结果不同：Apple、apple、APPLE被当成不一样的，词库冗余</p>
+</li>
+<li><p>无法实现长距离依赖：窗口仅N个词</p>
+</li>
+</ol>
+<h4 id="1-2-Engram解决方案："><a href="#1-2-Engram解决方案：" class="headerlink" title="1.2 Engram解决方案："></a>1.2 Engram解决方案：</h4><ol>
+<li><p>分词压缩：Apple、apple、APPLE 都当成一个词，ID相同，压缩词库</p>
+</li>
+<li><p>多头哈希Multi-head Hashing</p>
+</li>
+</ol>
+<p>首先，需要理解<strong>哈希嵌入</strong>：不直接存储所有可能的N-gram，而是用哈希函数把N-gram映射到一个固定大小的空间。 </p>
+<blockquote>
+<p>如果我们要为“所有可能的 N-gram”都分配一个独立的存储空间，那这个空间是无限的。<br>Engram 的做法：设定一个上限，比如 100 万个槽位。 </p>
+</blockquote>
+<p>接着，问题来了，映射到有限空间，必然有两个不一样的词映射成相同值的情况。 </p>
+<p>于是，又提出<strong>多头哈希</strong>Multi-head Hashing：使用K个不同的哈希函数，每个都对应一个独立的嵌入表。最终把所有检索到的向量拼接起来。这样不同词重合的可能就大大降低了。 </p>
+<ol start="3">
+<li>上下文感知门控</li>
+</ol>
+<p>依赖Transformer，Engram 确保了大模型能看到上下文，并且在这个基础上，利用 N-gram 作为“索引”去查找和补充知识。 </p>
+<h3 id="2-具体例子"><a href="#2-具体例子" class="headerlink" title="2. 具体例子"></a>2. 具体例子</h3><p>在工业级的大模型系统中，N-gram 常被用作混合架构的一部分，用来处理那些“杀鸡焉用牛刀”的简单任务。 </p>
+<h4 id="2-1-智能体（Agent）的意图识别："><a href="#2-1-智能体（Agent）的意图识别：" class="headerlink" title="2.1 智能体（Agent）的意图识别："></a>2.1 智能体（Agent）的意图识别：</h4><p>当用户说“我想订明天的机票”时，大模型处理这个请求成本很高。系统通常会先用轻量级的 N-gram（如 Trigram）进行快速匹配。如果命中了常见意图，直接用传统规则处理；只有遇到复杂的、没见过的指令，才调用大模型。这能极大降低延迟和成本。 </p>
+<h4 id="2-2-大模型的“回退”机制："><a href="#2-2-大模型的“回退”机制：" class="headerlink" title="2.2 大模型的“回退”机制："></a>2.2 大模型的“回退”机制：</h4><p>类似于以前的输入法，现在的某些 AI 系统在生成文本时，如果遇到极低置信度的情况，或者需要保证特定的格式（如 JSON 字段名），会利用 N-gram 的概率分布进行约束或修正，确保输出的稳定性。 </p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li>Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models</li>
+</ol>
 
     </div>
 
@@ -258,21 +286,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" rel="tag"># 计算机组成</a>
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/Engram/" rel="tag"># Engram</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/08/18/sumvac/" rel="prev" title="夏日杂记">
-                  <i class="fa fa-angle-left"></i> 夏日杂记
+                <a href="/2026/03/21/MLA_MoE/" rel="prev" title="MLA与MoE技术细节">
+                  <i class="fa fa-angle-left"></i> MLA与MoE技术细节
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2026/03/10/docker/" rel="next" title="docker基础">
-                  docker基础 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
