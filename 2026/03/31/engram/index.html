@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
+    <meta name="description" content="虽然MoE能减少计算，但对于静态知识（基础事实与判断），有时仍需要大量计算，没有把资源用在“刀刃”上，遂出现Engram，把模型的记忆和计算分开...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Engram机制">
 <meta property="og:url" content="http://example.com/2026/03/31/engram/index.html">
 <meta property="og:site_name" content="hello,universe">
-<meta property="og:description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
+<meta property="og:description" content="虽然MoE能减少计算，但对于静态知识（基础事实与判断），有时仍需要大量计算，没有把资源用在“刀刃”上，遂出现Engram，把模型的记忆和计算分开...">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2026/03/31/engram/en.png">
 <meta property="article:published_time" content="2026-03-31T06:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-31T07:21:40.200Z">
+<meta property="article:modified_time" content="2026-04-04T03:12:42.535Z">
 <meta property="article:author" content="Horizon Zhao">
 <meta property="article:tag" content="Engram">
 <meta property="article:tag" content="大模型">
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -202,7 +202,7 @@
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="Engram机制 | hello,universe">
-      <meta itemprop="description" content="虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...">
+      <meta itemprop="description" content="虽然MoE能减少计算，但对于静态知识（基础事实与判断），有时仍需要大量计算，没有把资源用在“刀刃”上，遂出现Engram，把模型的记忆和计算分开...">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -232,21 +232,17 @@
   
 </div>
 
-            <div class="post-description">虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram...</div>
+            <div class="post-description">虽然MoE能减少计算，但对于静态知识（基础事实与判断），有时仍需要大量计算，没有把资源用在“刀刃”上，遂出现Engram，把模型的记忆和计算分开...</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><blockquote>
-<p>虽然MoE能减少计算，但对于静态知识（常识性知识、简单判断），有时仍需要大量计算，还是低效，没有把资源用在“刀刃”上，遂出现Engram… </p>
-</blockquote>
-<p><img src="/2026/03/31/engram/en.png" alt="架构图"></p>
+    <div class="post-body" itemprop="articleBody"><p><img src="/2026/03/31/engram/en.png" alt="架构图"></p>
 <h3 id="1-Engram架构"><a href="#1-Engram架构" class="headerlink" title="1. Engram架构"></a>1. Engram架构</h3><p>Deepseek在2026年1月12日发表论文《Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models》，提出了Engram架构，其思想与自然语言处理的N-gram有密切关系，下面进行分析。 </p>
-<p><strong>原理</strong>：把海量的 N-gram 统计信息存储在一个巨大的查找表中，作为一个独立的模块挂载在大模型上。 </p>
-<p><strong>作用</strong>：大模型负责复杂的推理，而 N-gram 模块负责快速提取固定的事实知识，Engram在结构上与MoE的条件计算形成互补。</p>
-<p><strong>优势</strong>：这相当于给大模型装了一个“超级字典”。当模型需要回答事实性问题时，直接查 N-gram 表，既不需要消耗昂贵的 GPU 算力，又能大幅减少幻觉。 </p>
+<p><strong>原理</strong>：核心是“算存分离”。把海量的 N-gram 统计信息存储在一个巨大的嵌入表（内存）中，作为一个独立的模块挂载在LLM上，进而释放昂贵的高速显存。</p>
+<p><strong>作用</strong>：大模型负责复杂的推理，而 N-gram 模块负责快速提取固定的事实知识，Engram在结构上与MoE的条件计算形成互补。当模型需要回答事实性问题时，直接查 N-gram 表，既不需要消耗昂贵的 GPU 算力，又能大幅减少幻觉。</p>
 <h4 id="1-1-传统N-gram存在的问题："><a href="#1-1-传统N-gram存在的问题：" class="headerlink" title="1.1 传统N-gram存在的问题："></a>1.1 传统N-gram存在的问题：</h4><ol>
 <li><p>组合爆炸：比如3-gram，词库有50k个词，组合就有50k^3&#x3D;1.25e14种可能，而真实遇到的词很稀疏 </p>
 </li>
@@ -294,11 +290,14 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2026/03/21/entropy_ngram/" rel="prev" title="杂货铺1：熵，KL散度，N-gram语言模型">
-                  <i class="fa fa-angle-left"></i> 杂货铺1：熵，KL散度，N-gram语言模型
+                <a href="/2026/03/21/MLA_MoE/" rel="prev" title="MLA与MoE技术细节">
+                  <i class="fa fa-angle-left"></i> MLA与MoE技术细节
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2026/04/05/filebrowse/" rel="next" title="Windows预览窗口解决方案">
+                  Windows预览窗口解决方案 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
